@@ -19,11 +19,11 @@ export default function Profile() {
           user?.role === 'transporter' ? 'Mike Johnson' :
           user?.role === 'retailer' ? 'Sarah Wilson' : 'Alex Chen',
     email: user?.email || '',
-    phone: '+1 (555) 123-4567',
-    address: user?.role === 'farmer' ? 'Green Valley Farm, 123 Farm Road, Valley City, CA 94122' :
-             user?.role === 'transporter' ? 'Logistics Hub, 456 Transport Ave, Hub City, CA 94123' :
-             user?.role === 'retailer' ? 'Fresh Market Store, 789 Market St, Commerce City, CA 94124' :
-             '321 Consumer Blvd, Residential Area, CA 94125',
+    phone: '+91 98765 43210',
+    address: user?.role === 'farmer' ? 'Green Valley Farm, Village Khedli, Tehsil Narnaul, Haryana 123401' :
+             user?.role === 'transporter' ? 'Transport Hub, Sector 15, Gurgaon, Haryana 122001' :
+             user?.role === 'retailer' ? 'Fresh Market Store, Connaught Place, New Delhi 110001' :
+             'Residential Area, Sector 12, Noida, Uttar Pradesh 201301',
     bio: user?.role === 'farmer' ? 'Sustainable farming enthusiast with 15 years of experience in organic agriculture.' :
          user?.role === 'transporter' ? 'Reliable logistics provider specializing in temperature-controlled fresh produce delivery.' :
          user?.role === 'retailer' ? 'Committed to bringing fresh, locally-sourced products to our community.' :
@@ -36,6 +36,15 @@ export default function Profile() {
                      user?.role === 'transporter' ? ['DOT Certified', 'Cold Chain Specialist', 'ISO 9001'] :
                      user?.role === 'retailer' ? ['Food Safety Certified', 'Organic Retailer License'] :
                      ['Conscious Consumer Certified'],
+    // Currency fields in rupees
+    income: user?.role === 'farmer' ? '₹ 5,00,000' :
+            user?.role === 'transporter' ? '₹ 8,00,000' :
+            user?.role === 'retailer' ? '₹ 12,00,000' : '',
+    pricing: user?.role === 'farmer' ? '₹ 50/kg' :
+             user?.role === 'transporter' ? '₹ 15/km' :
+             user?.role === 'retailer' ? '₹ 80/kg' : '',
+    bankAccount: '1234567890',
+    ifscCode: 'SBIN0001234',
   });
 
   const [editData, setEditData] = useState(profileData);
@@ -217,6 +226,75 @@ export default function Profile() {
                 )}
               </div>
             )}
+
+            {/* Financial Information */}
+            {user?.role !== 'consumer' && (
+              <>
+                <div className="space-y-2">
+                  <Label htmlFor="income">
+                    {user?.role === 'farmer' ? 'Annual Income' : 
+                     user?.role === 'transporter' ? 'Annual Revenue' : 'Annual Turnover'}
+                  </Label>
+                  {isEditing ? (
+                    <Input
+                      id="income"
+                      value={editData.income}
+                      onChange={(e) => setEditData({...editData, income: e.target.value})}
+                      className="rounded-xl"
+                      placeholder="₹ 0"
+                    />
+                  ) : (
+                    <div className="p-3 bg-muted rounded-xl">{profileData.income}</div>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="pricing">
+                    {user?.role === 'farmer' ? 'Rate per kg' : 
+                     user?.role === 'transporter' ? 'Rate per km' : 'Average Price per kg'}
+                  </Label>
+                  {isEditing ? (
+                    <Input
+                      id="pricing"
+                      value={editData.pricing}
+                      onChange={(e) => setEditData({...editData, pricing: e.target.value})}
+                      className="rounded-xl"
+                      placeholder="₹ 0"
+                    />
+                  ) : (
+                    <div className="p-3 bg-muted rounded-xl">{profileData.pricing}</div>
+                  )}
+                </div>
+              </>
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="bankAccount">Bank Account Number</Label>
+              {isEditing ? (
+                <Input
+                  id="bankAccount"
+                  value={editData.bankAccount}
+                  onChange={(e) => setEditData({...editData, bankAccount: e.target.value})}
+                  className="rounded-xl"
+                />
+              ) : (
+                <div className="p-3 bg-muted rounded-xl">{profileData.bankAccount}</div>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="ifscCode">IFSC Code</Label>
+              {isEditing ? (
+                <Input
+                  id="ifscCode"
+                  value={editData.ifscCode}
+                  onChange={(e) => setEditData({...editData, ifscCode: e.target.value})}
+                  className="rounded-xl"
+                />
+              ) : (
+                <div className="p-3 bg-muted rounded-xl">{profileData.ifscCode}</div>
+              )}
+            </div>
           </div>
 
           <div className="space-y-2">
