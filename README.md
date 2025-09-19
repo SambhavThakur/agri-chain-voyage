@@ -1,73 +1,185 @@
-# Welcome to your Lovable project
+# AgriChain - Farm to Fork Transparency
 
-## Project info
+A full-stack-ready frontend for an agricultural supply chain web application built with React, TypeScript, and Tailwind CSS. AgriChain provides complete transparency from farm to fork using blockchain technology.
 
-**URL**: https://lovable.dev/projects/c9504e64-0487-4dd7-a8e9-717b01d48be4
+## 🌱 Features
 
-## How can I edit this code?
+### Multi-Role Dashboard System
+- **Farmer Dashboard**: Upload crop batches, generate QR codes, track harvest details
+- **Transporter Dashboard**: Manage logistics, update transport conditions, track deliveries
+- **Retailer Dashboard**: Inventory management, pricing controls, stock tracking
+- **Consumer Dashboard**: Product verification, QR code scanning, supply chain tracking
 
-There are several ways of editing your application.
+### Core Functionality
+- ✅ Role-based authentication and routing
+- ✅ QR code generation and scanning
+- ✅ Blockchain integration hooks (ethers.js ready)
+- ✅ Responsive design with agricultural theme
+- ✅ Complete supply chain tracking
+- ✅ Real-time status updates
+- ✅ Modern UI with shadcn/ui components
 
-**Use Lovable**
+## 🚀 Quick Start
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c9504e64-0487-4dd7-a8e9-717b01d48be4) and start prompting.
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation & Setup
 
-**Use your preferred IDE**
+```bash
+# Install dependencies
+npm install
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🔐 Authentication
 
-**Use GitHub Codespaces**
+The app includes a complete authentication system with role-based access:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Demo Login
+Use any email and password with one of these roles:
+- **Farmer**: Access crop management and batch creation
+- **Transporter**: Manage logistics and delivery tracking  
+- **Retailer**: Control inventory and pricing
+- **Consumer**: Verify products and scan QR codes
 
-## What technologies are used for this project?
+### Routes
+- `/login` - Authentication page
+- `/farmer` - Farmer dashboard
+- `/transporter` - Transporter dashboard
+- `/retailer` - Retailer dashboard
+- `/consumer` - Consumer dashboard
+- `/profile` - User profile management
 
-This project is built with:
+## 🏗️ Architecture
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Technology Stack
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Routing**: React Router v6
+- **State Management**: Context API
+- **QR Codes**: qrcode.react, react-qr-reader
+- **Blockchain Ready**: ethers.js integration hooks
 
-## How can I deploy this project?
+### Project Structure
+```
+src/
+├── components/         # Reusable UI components
+│   ├── ui/            # shadcn/ui components
+│   ├── Layout.tsx     # Main layout wrapper
+│   ├── Navbar.tsx     # Navigation header
+│   └── Sidebar.tsx    # Role-based sidebar
+├── contexts/          # React Context providers
+│   └── AuthContext.tsx
+├── pages/             # Route components
+│   ├── Login.tsx
+│   ├── FarmerDashboard.tsx
+│   ├── TransporterDashboard.tsx
+│   ├── RetailerDashboard.tsx
+│   ├── ConsumerDashboard.tsx
+│   └── Profile.tsx
+├── utils/             # Utility functions
+│   └── blockchain.js  # Blockchain integration hooks
+└── hooks/             # Custom React hooks
+```
 
-Simply open [Lovable](https://lovable.dev/projects/c9504e64-0487-4dd7-a8e9-717b01d48be4) and click on Share -> Publish.
+## 🔗 Blockchain Integration
 
-## Can I connect a custom domain to my Lovable project?
+The app includes placeholder functions for blockchain integration:
 
-Yes, you can!
+```javascript
+// utils/blockchain.js
+export async function connectWallet() { /* ethers.js implementation */ }
+export async function addBatchToChain(batchData) { /* Smart contract call */ }
+export async function getBatchDetails(batchId) { /* Blockchain query */ }
+export async function updateTransportStatus(batchId, data) { /* Update on-chain */ }
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Ready for Integration
+- Smart contract calls with ethers.js
+- Hardhat development environment
+- MetaMask wallet connection
+- On-chain data verification
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 🎨 Design System
+
+Agricultural-themed design with:
+- **Green color palette**: Representing nature and growth
+- **Rounded corners**: Modern, friendly appearance  
+- **Soft shadows**: Depth and elevation
+- **Responsive layout**: Mobile-first approach
+- **Semantic tokens**: Consistent design language
+
+## 📱 Mobile Support
+
+Fully responsive design with:
+- Touch-friendly navigation
+- Collapsible sidebar
+- Mobile-optimized forms
+- QR scanner integration ready
+
+## 🛠️ Development
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Type Checking
+```bash
+npm run type-check
+```
+
+### Linting
+```bash
+npm run lint
+```
+
+## 🔧 Customization
+
+### Adding New Features
+1. Create components in `src/components/`
+2. Add routes in `src/App.tsx`
+3. Update navigation in `src/components/Sidebar.tsx`
+4. Implement blockchain calls in `src/utils/blockchain.js`
+
+### Styling
+- Edit design tokens in `src/index.css`
+- Update component variants in `src/components/ui/`
+- Customize Tailwind config in `tailwind.config.ts`
+
+## 📋 Next Steps
+
+### Blockchain Integration
+1. Set up Hardhat development environment
+2. Deploy smart contracts for batch tracking
+3. Implement ethers.js wallet connection
+4. Add transaction confirmation flows
+
+### Enhanced Features
+- Real-time notifications
+- Advanced analytics dashboard
+- Multi-language support
+- PDF certificate generation
+- IoT sensor integration
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+**AgriChain** - Bringing transparency and trust to the agricultural supply chain through blockchain technology.
